@@ -21,7 +21,7 @@ internal class Test {
     @Test
     fun day3() {
         val sut = Day3()
-        assertEquals(TODO(), sut.part1())
-        assertEquals(TODO(), sut.part2())
+        assertEquals(198, sut.part1())
+        assertEquals(230, sut.part2())
     }
 }
