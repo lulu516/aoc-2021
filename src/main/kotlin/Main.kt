@@ -1,4 +1,4 @@
 fun main() {
-    val day = Day3()
-    println(day.part2())
+    val day = Day6()
+    println(day.part2(256))
 }
