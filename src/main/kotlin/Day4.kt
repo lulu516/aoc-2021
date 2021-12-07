@@ -9,9 +9,7 @@ class Day4 {
         for (number in numbers) {
             for (boardNr in boards.indices) {
                 findMatch(boards[boardNr], number)?.let {
-                    val result = resultPerBoard.getOrDefault(boardNr, mutableListOf())
-                    result.add(it)
-                    resultPerBoard[boardNr] = result
+                    val result = resultPerBoard.computeIfAbsent(boardNr) { mutableListOf() }.also { l -> l.add(it) }
                     if (win(result)) {
                         return calculateScore(boards[boardNr], result, number)
                     }
@@ -34,9 +32,7 @@ class Day4 {
         for (number in numbers) {
             for (boardNr in boards.indices.filterIndexed { _, i -> !winBoardsNr.contains(i) }) {
                 findMatch(boards[boardNr], number)?.let {
-                    val result = resultPerBoard.getOrDefault(boardNr, mutableListOf())
-                    result.add(it)
-                    resultPerBoard[boardNr] = result
+                    val result = resultPerBoard.computeIfAbsent(boardNr) { mutableListOf() }.also { l -> l.add(it) }
                     if (win(result)) {
                         winBoardNr = boardNr
                         winNumber = number
