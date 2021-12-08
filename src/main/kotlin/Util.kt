@@ -7,3 +7,7 @@ fun readLine(c: Any, separator: String): List<String> =
 fun String.fromBinary() = Integer.parseInt(this, 2)
 
 fun Int.sigma(): Int = if (this == 0) 0 else (1..this).sum()
+
+fun String.containsAll(str: String): Boolean = str.all { this.contains(it) }
+
+fun List<Int>.concatToInt(): Int = Integer.valueOf(this.joinToString(""))
