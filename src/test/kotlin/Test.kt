@@ -74,4 +74,26 @@ internal class Test {
         assertEquals(26397, sut.part1())
         assertEquals(288957, sut.part2())
     }
+
+    @Test
+    fun day11() {
+        val sut = Day11()
+        assertEquals(1656, sut.part1())
+        assertEquals(195, sut.part2())
+    }
+
+
+    @Test
+    fun day12() {
+        val sut = Day12()
+        assertEquals(19, sut.part1())
+        assertEquals(103, sut.part2())
+    }
+
+    @Test
+    fun day13() {
+        val sut = Day13()
+        assertEquals(17, sut.part1())
+        sut.part2()
+    }
 }

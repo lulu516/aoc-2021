@@ -41,4 +41,36 @@ data class Graph<T>(val edges: HashMap<T, HashSet<T>> = HashMap()) {
         edges[startNode]?.filterNot { nextNode -> visited.contains(nextNode) }
             ?.forEach { nextNode -> dfsRecursion(nextNode, targetNode, visited) }
     }
+
+    /**
+     *  This graph traversal doesn't take any special rule into consideration, e.g.: Day12 in which the next node condition is customized.
+     */
+    fun allPaths(startNode: T, targetNode: T): Set<List<T>> {
+        val allPaths = mutableSetOf<List<T>>()
+        allPathRecursion(startNode, targetNode, mutableListOf(), mutableListOf(), allPaths)
+        return allPaths
+    }
+
+    private fun allPathRecursion(
+        startNode: T,
+        targetNode: T,
+        visited: MutableList<T>,
+        path: MutableList<T>,
+        allPaths: MutableSet<List<T>>,
+    ) {
+        visited.add(startNode)
+        path.add(startNode)
+        if (startNode == targetNode) {
+            allPaths.add(path.toList())
+            println("Found it!!!! $path")
+        } else {
+            edges[startNode]
+                ?.filterNot { nextNode -> visited.contains(nextNode) }
+                ?.forEach { nextNode ->
+                    allPathRecursion(nextNode, targetNode, visited, path, allPaths)
+                }
+        }
+        path.removeLast()
+        visited.removeLast()
+    }
 }

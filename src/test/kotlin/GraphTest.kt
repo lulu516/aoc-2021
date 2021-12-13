@@ -20,5 +20,9 @@ internal class GraphTest {
         assertEquals(listOf(0, 1, 2, 3, 6), graph.bfs(0, 6))
         assertEquals(listOf(0, 1, 3, 2, 6, 5, 4), graph.dfs(0))
         assertEquals(listOf(0, 1, 3, 2, 6), graph.dfs(0, 6))
+        assertEquals(
+            setOf(listOf(0, 2, 6), listOf(0, 2, 3, 5, 6), listOf(0, 1, 3, 2, 6), listOf(0, 1, 3, 5, 6)),
+            graph.allPaths(0, 6)
+        )
     }
 }
